@@ -1,0 +1,3 @@
+web: bin/rails server -p 3001
+vite: bin/vite dev
+types: npm run check-types-watch

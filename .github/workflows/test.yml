@@ -1,0 +1,55 @@
+name: Publish Docker image
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: csphero_test
+          POSTGRES_DB: csphero_test
+          POSTGRES_PASSWORD: csphero_test
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports: ["5432:5432"]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2.0
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Install packages
+      run: |
+        npm install
+
+    - name: Check types
+      run: npm run check-types-once
+
+    # - name: Run javascript tests
+    #   run: yarn run test
+
+    - name: Setup test database
+      env:
+        RAILS_ENV: test
+        PGHOST: localhost
+        PGUSER: csphero_test
+      run: |
+        bin/rails db:reset
+
+    - name: Run ruby/tests
+      run: bin/rails test
