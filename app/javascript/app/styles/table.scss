@@ -1,0 +1,95 @@
+.nice-table {
+  display: grid;
+  border: 1px solid var(--gray-200);
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-radius: $unit1;
+  font-size: $text1;
+  background-color: var(--color-bg);
+  max-width: 100%;
+  overflow: hidden;
+  grid-auto-rows: min-content;
+
+  .cell {
+    padding: $unit2 $unit3;
+    border-bottom: 1px solid var(--gray-200);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.align-right {
+      text-align: right;
+    }
+
+    &.align-center {
+      text-align: center;
+    }
+
+    &.align-left {
+      text-align: left;
+    }
+
+    .secondary {
+      color: var(--gray-400);
+    }
+  }
+
+  > .row {
+    transition: background-color 0.1s ease-in-out;
+    &:hover {
+      .cell {
+        background-color: var(--color-table-row-hover);
+      }
+    }
+
+    &:last-child,
+    &.expanded {
+      .cell {
+        border-bottom: none;
+      }
+    }
+
+    &.expanded {
+      background-color: var(--color-table-row-hover);
+      &:hover {
+        background-color: var(--color-table-row-hover);
+      }
+    }
+  }
+
+  .header {
+    .row {
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .cell {
+      display: table-cell;
+      vertical-align: inherit;
+      padding: $unit2 $unit3;
+      background-color: var(--color-table-header);
+    }
+  }
+
+  .expanded-view {
+    padding: $unit2 0;
+    background-color: var(--color-table-row-hover);
+    // goes for the whole row
+    grid-column-start: 1;
+    grid-column-end: 6;
+
+    &:hover {
+      background-color: var(--color-table-row-hover);
+    }
+  }
+}
+
+.header,
+.row {
+  display: contents;
+}
+
+.row:last-child .cell {
+  border-bottom: 0;
+}
