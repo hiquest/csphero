@@ -6,6 +6,8 @@ CSP Hero is an open-source platform designed to help developers collect and anal
 
 ---
 
+> The easiest way to try CSP Hero is in [our cloud service](https://www.csphero.com/).
+
 ## Extra tools
 
 Several free tools are available online (soon to be open-sourced as well):
