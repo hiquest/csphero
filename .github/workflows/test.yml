@@ -1,4 +1,4 @@
-name: Publish Docker image
+name: Test ruby and javascript code
 on: [push]
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
         npm install
 
     - name: Check types
-      run: npm run check-types-once
+      run: npm run check-types
 
     # - name: Run javascript tests
     #   run: yarn run test
