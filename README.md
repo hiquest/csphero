@@ -2,11 +2,11 @@
 
 CSP Hero is an open-source platform designed to help developers collect and analyze [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) reports.
 
+> The easiest way to try CSP Hero is in [our cloud service](https://www.csphero.com/).
+
 <img src="./.github/screenshots/main.png" width="100%" alt="CSP Hero dashboard"/>
 
 ---
-
-> The easiest way to try CSP Hero is in [our cloud service](https://www.csphero.com/).
 
 ## Extra tools
 
