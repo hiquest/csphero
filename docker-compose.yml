@@ -3,7 +3,26 @@ version: '3'
 services:
   web:
     image: "hiquest/csphero:latest"
-    env_file:
-      - env.prod
+    environment:
+      - RAILS_ENV=production
+      - NODE_ENV=production
+      - SECRET_KEY_BASE=your_secret_key_base_here
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=csphero_production
+      - DB_USERNAME=myusername
+      - DB_PASSWORD=replace_with_your_password
     ports:
-      - "3000:3000"
+      - "80:80"
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=csphero_production
+      - POSTGRES_USER=myusername
+      - POSTGRES_PASSWORD=replace_with_your_password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:

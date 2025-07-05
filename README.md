@@ -14,6 +14,20 @@ CSP Hero is a **free**, **open-source** server and dashboard designed to help de
 - **Analyze reports**: View and analyze collected reports in a user-friendly dashboard.
 - **Report aggregation**: Smartly aggregate reports to get a comprehensive view.
 
+## Quick start with Docker
+
+A public docker image is available on [Docker Hub](https://hub.docker.com/r/hiquest/csphero).
+
+Have a look at the [docker-compose example](docker-compose.yml) to quickly start CSP Hero with Docker.
+
+```bash
+docker compose up -d
+```
+
+Make sure to set the `SECRET_KEY_BASE` environment variable to a secure random value, as it is used to sign session cookies.
+
+Also, since we need a postgresql database, you need to set the `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME` environment variables to connect to your database.
+
 ## What is a Content Security Police?
 
 [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) allows developers to define which resources are allowed to load on their web pages, helping to prevent cross-site scripting (XSS) attacks and other vulnerabilities.
